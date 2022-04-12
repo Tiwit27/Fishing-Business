@@ -16,11 +16,12 @@ public class MoneyBehaviour : MonoBehaviour
     }
     void Update()
     {
-        //przypisanie pieniï¿½dzy
-        moneyTMpro.text = money + " ï¿½";
+        //przypisanie pieniêdzy
+        moneyTMpro.text = money + " €";
     }
     public void Buy()
     {
+        //wywo³anie zakupu
         cost = LIB.cost1;
         money -= cost;
     }
