@@ -19,14 +19,15 @@ public class FishingClubsBehaviour : MonoBehaviour
     public GameObject writeName;
     public GameObject nameGive;
     public GameObject warning;
+    public GameObject warning1;
     public TMP_Dropdown dropdown;
     public GameObject Info;
+    public MoneyBehaviour MB;
     void Update()
     {
         if (isMoreOne == true)
         {
             CheckInObject.transform.position = MyClub.transform.position;
-            Info.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.Escape) && GB.fishingClubs.activeSelf && !writeName.activeSelf)
         {
@@ -47,6 +48,9 @@ public class FishingClubsBehaviour : MonoBehaviour
             {
                 isMoreOne = false;
             }
+            warning.SetActive(false);
+            warning1.SetActive(false);
+            nameGive.GetComponent<TMP_InputField>().text = "";
         }
         //scrollowanie listy
         if (GB.fishingClubs.activeSelf && prefabCount > 4)
@@ -67,16 +71,16 @@ public class FishingClubsBehaviour : MonoBehaviour
     }
     public void Create()
     {
-        writeName.SetActive(true);
-        MyClub = Instantiate(prefab);
-        MyClub.transform.parent = list.transform;
-        MyClub.transform.position = list.transform.position;
-        if (prefabCount >= 1)
-        {
-            MyClub.transform.position -= new Vector3(0, 178 * prefabCount, 0);
-            Debug.Log("pozycja");
-        }
-        prefabCount++;
+            writeName.SetActive(true);
+            MyClub = Instantiate(prefab);
+            MyClub.transform.parent = list.transform;
+            MyClub.transform.position = list.transform.position;
+            if (prefabCount >= 1)
+            {
+                MyClub.transform.position -= new Vector3(0, 178 * prefabCount, 0);
+                Debug.Log("pozycja");
+            }
+            prefabCount++;
     }
     void Start()
     {
@@ -85,26 +89,37 @@ public class FishingClubsBehaviour : MonoBehaviour
         prefabCount = 0;
         isMoreOne = false;
         Info.SetActive(false);
+        warning1.SetActive(false);
     }
     public void WriteNameExit()
     {
         if (nameGive.GetComponent<TMP_InputField>().text != "")
         {
-            warning.SetActive(false);
-            MyClub.transform.Find("ClubName").GetComponent<TMP_Text>().text = nameGive.GetComponent<TMP_InputField>().text;
-            nameGive.GetComponent<TMP_InputField>().text = "";
-            dropdown.options.Add(new TMP_Dropdown.OptionData() { text = MyClub.transform.Find("ClubName").GetComponent<TMP_Text>().text });
-            dropdown.RefreshShownValue();
-            writeName.SetActive(false);
-            FCI.FCIO.PrzypiszName();
-            FCI.Przypisz();
-            isMoreOne = true;
-            FCDB.Dodaj();
+            if (MB.money >= 35000)
+            {
+                MB.money -= 35000;
+                warning.SetActive(false);
+                warning1.SetActive(false);
+                MyClub.transform.Find("ClubName").GetComponent<TMP_Text>().text = nameGive.GetComponent<TMP_InputField>().text;
+                nameGive.GetComponent<TMP_InputField>().text = "";
+                dropdown.options.Add(new TMP_Dropdown.OptionData() { text = MyClub.transform.Find("ClubName").GetComponent<TMP_Text>().text });
+                dropdown.RefreshShownValue();
+                writeName.SetActive(false);
+                FCI.FCIO.PrzypiszName();
+                FCI.Przypisz();
+                isMoreOne = true;
+                FCDB.Dodaj();
+            }
+            else
+            {
+                warning1.SetActive(true);
+            }
         }
         else
         {
             warning.SetActive(true);
             isMoreOne = false;
         }
+        nameGive.GetComponent<TMP_InputField>().text = "";
     }
 }

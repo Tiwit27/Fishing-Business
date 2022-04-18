@@ -21,8 +21,9 @@ public class FishingClubInObject : MonoBehaviour
     }
     public void Click()
     {
-        name1 = this.gameObject.GetComponentInChildren<TMP_Text>().text;
-        ID = FCI.FCDB.Name.IndexOf(name1);
+        FCI.FCB.Info.SetActive(true);
+        FCI.FCIO = this.gameObject.GetComponent<FishingClubInObject>();
+        ID = FCI.FCDB.Name.IndexOf(name);
         FCI.FCDB.On();
     }
 }

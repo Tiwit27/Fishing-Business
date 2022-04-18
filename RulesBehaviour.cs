@@ -5,8 +5,10 @@ using TMPro;
 
 public class RulesBehaviour : MonoBehaviour
 {
+    public GameBehaviour GB;
     public RulesDataBase RDB;
     public MyLakesBehaviour MLB;
+    public FishingClubsDataBase FCDB;
     public GameObject background;
     public TMP_Dropdown dropdown;
     public TMP_Dropdown dropdown1;
@@ -39,6 +41,16 @@ public class RulesBehaviour : MonoBehaviour
     public GameObject komercyjne;
     public GameObject zwiazkowe;
     public GameObject hodowlane;
+    //zwi¹zkowe
+    public TMP_Dropdown chooseClub;
+    public TMP_Text costTypeText;
+    public TMP_Text fishBuyText;
+    public TMP_Text fishLimitIsTrueText;
+    public TMP_Text maxFishingRodsText;
+    public TMP_Text costText;
+    public TMP_Text fishCostText;
+    public TMP_Text fishLimitText;
+    public int ID1;
     void Start()
     {
         rulesWindow.SetActive(false);
@@ -85,6 +97,10 @@ public class RulesBehaviour : MonoBehaviour
             if (RDB.FishBuyType[ID] == "Na Wagê")
             {
                 dropdown2.value = 2;
+            }
+            if (RDB.FishBuyType[ID] == "Zakaz")
+            {
+                dropdown2.value = 3;
             }
             //Cost
             inputField.text = RDB.Cost[ID].ToString();
@@ -203,8 +219,14 @@ public class RulesBehaviour : MonoBehaviour
             ID = RDB.Name.IndexOf(MLB.name.text);
             RDB.FishBuyType[ID] = "Na Wagê";
         }
+        if (fishbuyType.GetComponent<TMP_Text>().text == "Zakaz")
+        {
+            costTypeID = 4;
+            ID = RDB.Name.IndexOf(MLB.name.text);
+            RDB.FishBuyType[ID] = "Zakaz";
+        }
         //buyfish check
-        if (RDB.FishBuyType[ID] == "W Cenie")
+        if (RDB.FishBuyType[ID] == "W Cenie" && RDB.FishBuyType[ID] == "Zakaz")
         {
             fishCost.SetActive(false);
             RDB.FishCost[ID] = 0;
@@ -342,10 +364,40 @@ public class RulesBehaviour : MonoBehaviour
             MLB.myLakes.SetActive(true);
             background.SetActive(false);
         }
+        //przypisanie zwi¹zkowe
+        if (FCDB.FCB.isMoreOne)
+        {
+            if (dropdown.value == 1)
+            {
+                ZwiazkowePrzypisz();
+            }
+        }
     }
     //button change rules
     public void ChangeRules()
     {
-        Debug.Log("Wczytaj stronê z zwi¹zkiem");
+        GB.OpenFishingClubs();
+        rulesWindow.SetActive(false);
+        background.SetActive(false);
+        GB.SG.background2.SetActive(true);
+    }
+    public void ZwiazkowePrzypisz()
+    {
+        ID1 = FCDB.Name.IndexOf(chooseClub.GetComponentInChildren<TMP_Text>().text);
+        costTypeText.text = FCDB.CostType[ID1];
+        fishBuyText.text = FCDB.FishBuyType[ID1];
+        switch (FCDB.FishLimitIsTrueList[ID1])
+        {
+            case true:
+                fishLimitIsTrueText.text = "Tak";
+                break;
+            case false:
+                fishLimitIsTrueText.text = "Nie";
+                break;
+        }
+        maxFishingRodsText.text = FCDB.FishingRodLimit[ID1].ToString();
+        costText.text = FCDB.Cost[ID1].ToString();
+        fishCostText.text = FCDB.FishCost[ID1].ToString();
+        fishLimitText.text = FCDB.FishLimit[ID1].ToString();
     }
 }

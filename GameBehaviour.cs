@@ -53,6 +53,7 @@ public class GameBehaviour : MonoBehaviour
         background3.SetActive(true);
         obramówka1.SetActive(true);
         FCB.list.SetActive(true);
+        FCB.Info.SetActive(false);
     }
     void Update()
     {

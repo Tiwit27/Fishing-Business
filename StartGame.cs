@@ -23,6 +23,7 @@ public class StartGame : MonoBehaviour
     public GameObject MainMenu;
     private int countryID;
     private int regionID;
+    public GameObject warning;
     void Start()
     {
         //przypisanie
@@ -44,14 +45,22 @@ public class StartGame : MonoBehaviour
         GameB.buyLakes.SetActive(false);
         GameB.obramówka.SetActive(false);
         GameB.MLB.myLakes.SetActive(false);
+        warning.SetActive(false);
     }
 
     public void Next()
     {
         //dalej
         username.text = GameObject.Find("user name input").GetComponent<TMP_InputField>().text;
-        start.SetActive(false);
-        chooseCountry.SetActive(true);
+        if (username.text != "" && username.text != " ")
+        {
+            start.SetActive(false);
+            chooseCountry.SetActive(true);
+        }
+        else 
+        {
+            warning.SetActive(true);        
+        }
     }
     public void Next1()
     {
