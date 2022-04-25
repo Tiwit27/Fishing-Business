@@ -16,6 +16,7 @@ public class RulesDataBase : MonoBehaviour
     public List<int> FishingRodLimit = new List<int>();
     public List<int> Open = new List<int>();
     public List<int> Close = new List<int>();
+    public List<string> Club = new List<string>();
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);

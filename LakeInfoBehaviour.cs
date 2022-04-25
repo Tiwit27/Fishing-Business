@@ -145,6 +145,7 @@ public class LakeInfoBehaviour : MonoBehaviour
         //Open Hours
         RDB.Open.Add(6);
         RDB.Close.Add(20);
+        RDB.Club.Add("");
     }
     public void Back()
     {

@@ -5,6 +5,7 @@ using TMPro;
 
 public class FishingClubsDataBase : MonoBehaviour
 {
+    public RulesBehaviour RB;
     public FishingClubsBehaviour FCB;
     public FishingClubsInfo FCI;
     public int ID;
@@ -17,6 +18,7 @@ public class FishingClubsDataBase : MonoBehaviour
     public List<int> Cost = new List<int>();
     public List<int> FishCost = new List<int>();
     public List<int> FishLimit = new List<int>();
+    public RulesDataBase RDB;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -45,6 +47,20 @@ public class FishingClubsDataBase : MonoBehaviour
     {
         ID1 = FCI.FCIO.ID;
         FishBuyType[ID1] = FCI.fishbuyType.GetComponentInChildren<TMP_Text>().text;
+        if (FishBuyType[ID1] == "W Cenie" || FishBuyType[ID1] == "Zakaz")
+        {
+            FCI.fishCost.gameObject.SetActive(false);
+            RB.fishCost.gameObject.SetActive(false);
+            FishCost[ID] = 0;
+            RDB.FishCost[ID] = 0;
+            RB.fishCostText.gameObject.SetActive(false);
+        }
+        else
+        {
+            FCI.fishCost.gameObject.SetActive(true);
+            RB.fishCost.gameObject.SetActive(true);
+            RB.fishCostText.gameObject.SetActive(true);
+        }
     }
     public void FishLimitIsTrue()
     {
@@ -53,9 +69,14 @@ public class FishingClubsDataBase : MonoBehaviour
         {
             case "Tak":
                 FishLimitIsTrueList[ID1] = true;
+                FCI.fishLimit.gameObject.SetActive(true);
+                RB.fishLimitText.gameObject.SetActive(true);
                 break;
             case "Nie":
                 FishLimitIsTrueList[ID1] = false;
+                FCI.fishLimit.gameObject.SetActive(false);
+                RB.fishLimitText.gameObject.SetActive(false);
+                FishLimit[ID1] = 0;
                 break;
         }
     }
@@ -80,7 +101,7 @@ public class FishingClubsDataBase : MonoBehaviour
     public void FishCostPrzypisz()
     {
         ID1 = FCI.FCIO.ID;
-        if (FCI.cost.text == "")
+        if (FCI.fishCost.text == "")
         {
             FishCost[ID1] = 0;
             FCI.fishCost.text = "0";
@@ -93,7 +114,7 @@ public class FishingClubsDataBase : MonoBehaviour
     public void FishLimitPrzypisz()
     {
         ID1 = FCI.FCIO.ID;
-        if (FCI.cost.text == "")
+        if (FCI.fishLimit.text == "")
         {
             FishLimit[ID1] = 0;
             FCI.fishLimit.text = "0";

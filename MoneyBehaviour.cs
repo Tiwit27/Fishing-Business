@@ -12,7 +12,6 @@ public class MoneyBehaviour : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        money = 50000;
     }
     void Update()
     {
