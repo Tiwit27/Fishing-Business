@@ -5,6 +5,7 @@ using TMPro;
 
 public class MyLakesBehaviour : MonoBehaviour
 {
+    public GameBehaviour GB;
     public MyLakesInfoInObjects MLIIO;
     public LakesBehaviour LB;
     public DataBase DB;
@@ -51,7 +52,7 @@ public class MyLakesBehaviour : MonoBehaviour
     void Update()
     {
         //wychodzenie ze strony
-        if (Input.GetKeyDown(KeyCode.Escape) && myLakes.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape) && myLakes.activeSelf && !GB.myWorkers.activeSelf)
         {
             name.text = "";
             city.text = "";

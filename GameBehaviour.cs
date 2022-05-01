@@ -8,6 +8,7 @@ public class GameBehaviour : MonoBehaviour
     public StartGame SG;
     public MyLakesBehaviour MLB;
     public FishingClubsBehaviour FCB;
+    public WorkersBehaviour WB;
     public GameObject buyLakes;
     public bool buyLakesIsOn;
     public GameObject obramówka;
@@ -16,6 +17,7 @@ public class GameBehaviour : MonoBehaviour
     public GameObject stopWindow;
     public GameObject fishingClubs;
     public GameObject background3;
+    public GameObject myWorkers;
     void Start()
     {
         obramówka1.SetActive(false);
@@ -23,6 +25,7 @@ public class GameBehaviour : MonoBehaviour
         fishingClubs.SetActive(false);
         stopWindow.SetActive(false);
         Time.timeScale = 1;
+        myWorkers.SetActive(false);
     }
     //lakes
     public void OpenLakes()
@@ -33,6 +36,7 @@ public class GameBehaviour : MonoBehaviour
         obramówka.SetActive(true);
         SG.MainMenu.SetActive(false);
         SG.background2.SetActive(false);
+        WB.workers.SetActive(false);
     }
     public void OpenMyLakes()
     {
@@ -44,6 +48,8 @@ public class GameBehaviour : MonoBehaviour
         SG.LB.lakeInformation.SetActive(false);
         fishingClubs.SetActive(false);
         background3.SetActive(false);
+        myWorkers.SetActive(false);
+        WB.workers.SetActive(false);
     }
     //fishingClubs
     public void OpenFishingClubs()
@@ -54,6 +60,23 @@ public class GameBehaviour : MonoBehaviour
         obramówka1.SetActive(true);
         FCB.list.SetActive(true);
         FCB.Info.SetActive(false);
+        WB.workers.SetActive(false);
+    }
+    public void OpenMyWorkers()
+    {
+        MLB.myLakes.SetActive(false);
+        myWorkers.SetActive(true);
+        background3.SetActive(true);
+        WB.workers.SetActive(false);
+    }
+    public void OpenWorkers()
+    {
+        background3.SetActive(false);
+        SG.background.SetActive(true);
+        SG.background2.SetActive(false);
+        WB.workers.SetActive(true);
+        MLB.myLakes.SetActive(false);
+        SG.MainMenu.SetActive(false);
     }
     void Update()
     {
@@ -75,6 +98,5 @@ public class GameBehaviour : MonoBehaviour
     }
     public void Exit()
     {
-        Debug.Log("Exit");
     }
 }
