@@ -68,12 +68,10 @@ public class FishingClubsBehaviour : MonoBehaviour
             list.transform.position += new Vector3(0, Input.mouseScrollDelta.y * 20 * -1, 0);
             if (list.transform.position.y <= StopUp.transform.position.y)
             {
-                Debug.Log("za nisko");
                 list.transform.position = new Vector3(list.transform.position.x, 675, list.transform.position.z);
             }
             if (CheckInObject.transform.position.y >= StopDown.transform.position.y)
             {
-                Debug.Log("za wysoko");
                 float nowPosition = list.transform.position.y;
                 list.transform.position = new Vector3(list.transform.position.x, nowPosition - 20, list.transform.position.z);
             }
@@ -94,7 +92,6 @@ public class FishingClubsBehaviour : MonoBehaviour
             if (prefabCount >= 1)
             {
                 MyClub[ID].transform.position -= new Vector3(0, 178 * prefabCount, 0);
-                Debug.Log("pozycja");
             }
             prefabCount++;
     }

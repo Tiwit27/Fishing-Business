@@ -127,7 +127,6 @@ public class FishingClubsDataBase : MonoBehaviour
     public void On()
     {
         ID1 = FCI.FCIO.ID;
-        Debug.Log("Dzia³am");
         FCI.nameClub.text = "Regulamin zwi¹zku: " + Name[ID1];
         switch (CostType[ID1])
         {

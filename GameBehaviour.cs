@@ -26,6 +26,11 @@ public class GameBehaviour : MonoBehaviour
         stopWindow.SetActive(false);
         Time.timeScale = 1;
         myWorkers.SetActive(false);
+        WB.workers.SetActive(false);
+        for (int i = 0; i < 4; i++)
+        {
+            WB.workersCategory[i].SetActive(false);
+        }
     }
     //lakes
     public void OpenLakes()
@@ -71,8 +76,8 @@ public class GameBehaviour : MonoBehaviour
     }
     public void OpenWorkers()
     {
-        background3.SetActive(false);
-        SG.background.SetActive(true);
+        background3.SetActive(true);
+        SG.background.SetActive(false);
         SG.background2.SetActive(false);
         WB.workers.SetActive(true);
         MLB.myLakes.SetActive(false);

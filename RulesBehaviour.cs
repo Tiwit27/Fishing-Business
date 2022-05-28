@@ -216,10 +216,8 @@ public class RulesBehaviour : MonoBehaviour
         }
         if (lakeType.GetComponent<TMP_Text>().text == "Zwi¹zkowe")
         {
-            Debug.Log("Ca³oœæ");
             if (FCDB.Name.Count > 0)
             {
-                Debug.Log("IF");
                 lakeTypeID = 2;
                 ID = RDB.Name.IndexOf(MLB.name.text);
                 RDB.LakeType[ID] = "Zwi¹zkowe";
@@ -227,7 +225,6 @@ public class RulesBehaviour : MonoBehaviour
             }
             else
             {
-                Debug.Log("Else");
                 Warning.SetActive(true);
                 lakeTypeID = 1;
                 ID = RDB.Name.IndexOf(MLB.name.text);

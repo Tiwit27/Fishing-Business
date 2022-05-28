@@ -43,7 +43,6 @@ public class MyLakesBehaviour : MonoBehaviour
         {
             myLake = Instantiate(prefab, new Vector3(startPosition.position.x, startPosition.position.y, 0), Quaternion.identity);
             isFirst = false;
-            Debug.Log("check");
         }
         myLake.transform.parent = myLakes1.transform;
         myLake.transform.Find("LakeName").GetComponent<TMP_Text>().text = LB.name1;
