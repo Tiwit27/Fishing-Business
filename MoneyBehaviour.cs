@@ -16,7 +16,7 @@ public class MoneyBehaviour : MonoBehaviour
     void Update()
     {
         //przypisanie pieniêdzy
-        moneyTMpro.text = money + " €";
+        moneyTMpro.text = money + " z³";
     }
     public void Buy()
     {

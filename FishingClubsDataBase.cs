@@ -52,7 +52,6 @@ public class FishingClubsDataBase : MonoBehaviour
             FCI.fishCost.gameObject.SetActive(false);
             RB.fishCost.gameObject.SetActive(false);
             FishCost[ID] = 0;
-            RDB.FishCost[ID] = 0;
             RB.fishCostText.gameObject.SetActive(false);
         }
         else

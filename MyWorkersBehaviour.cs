@@ -16,5 +16,6 @@ public class MyWorkersBehaviour : MonoBehaviour
         GB.SG.LB.lakes.SetActive(false);
         GB.SG.LB.lakeInformation.SetActive(false);
         GB.fishingClubs.SetActive(false);
+        GB.background4.SetActive(false);
     }
 }

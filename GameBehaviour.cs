@@ -5,6 +5,8 @@ using TMPro;
 
 public class GameBehaviour : MonoBehaviour
 {
+    public AddWorkerBehaviour AWB;
+    public WorkersBuyBehaviour WBB;
     public StartGame SG;
     public MyLakesBehaviour MLB;
     public FishingClubsBehaviour FCB;
@@ -18,8 +20,10 @@ public class GameBehaviour : MonoBehaviour
     public GameObject fishingClubs;
     public GameObject background3;
     public GameObject myWorkers;
+    public GameObject background4;
     void Start()
     {
+        background4.SetActive(false);
         obramówka1.SetActive(false);
         background3.SetActive(false);
         fishingClubs.SetActive(false);
@@ -42,6 +46,10 @@ public class GameBehaviour : MonoBehaviour
         SG.MainMenu.SetActive(false);
         SG.background2.SetActive(false);
         WB.workers.SetActive(false);
+        background4.SetActive(false);
+        WBB.workersInfo.SetActive(false);
+        WBB.background.SetActive(false);
+        AWB.addWorkers.SetActive(false);
     }
     public void OpenMyLakes()
     {
@@ -55,6 +63,11 @@ public class GameBehaviour : MonoBehaviour
         background3.SetActive(false);
         myWorkers.SetActive(false);
         WB.workers.SetActive(false);
+        background4.SetActive(false);
+        WBB.workersInfo.SetActive(false);
+        WBB.background.SetActive(false);
+        AWB.addWorkers.SetActive(false);
+
     }
     //fishingClubs
     public void OpenFishingClubs()
@@ -66,13 +79,18 @@ public class GameBehaviour : MonoBehaviour
         FCB.list.SetActive(true);
         FCB.Info.SetActive(false);
         WB.workers.SetActive(false);
+        background4.SetActive(false);
+        WBB.workersInfo.SetActive(false);
+        WBB.background.SetActive(false);
+        AWB.addWorkers.SetActive(false);
     }
     public void OpenMyWorkers()
     {
         MLB.myLakes.SetActive(false);
         myWorkers.SetActive(true);
-        background3.SetActive(true);
+        background4.SetActive(true);
         WB.workers.SetActive(false);
+        AWB.addWorkers.SetActive(false);
     }
     public void OpenWorkers()
     {
@@ -82,6 +100,10 @@ public class GameBehaviour : MonoBehaviour
         WB.workers.SetActive(true);
         MLB.myLakes.SetActive(false);
         SG.MainMenu.SetActive(false);
+        background4.SetActive(false);
+        WBB.workersInfo.SetActive(false);
+        WBB.background.SetActive(false);
+        AWB.addWorkers.SetActive(false);
     }
     void Update()
     {

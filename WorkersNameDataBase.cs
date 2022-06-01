@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class WorkersNameDataBase : MonoBehaviour
+{
+    [SerializeField] public List<string> Mnames = new List<string>();
+    [SerializeField] public List<string> Wnames = new List<string>();
+    [SerializeField] public List<int> Skills = new List<int>();
+    [SerializeField] public List<int> Ambitions = new List<int>();
+    [SerializeField] public List<int> WantingSalary = new List<int>();
+    [SerializeField] public List<Texture> bonusC1 = new List<Texture>();
+    [SerializeField] public List<Texture> bonusC2 = new List<Texture>();
+    [SerializeField] public List<Texture> bonusC3 = new List<Texture>();
+    [SerializeField] public List<Texture> bonusC4 = new List<Texture>();
+    [SerializeField] public List<Texture> ambitions = new List<Texture>();
+    [SerializeField] public List<Texture> faces = new List<Texture>();
+    [SerializeField] public List<bool> StopBuy = new List<bool>();
+    //Workers
+    [SerializeField] public List<string> NameSave = new List<string>();
+    [SerializeField] public List<int> SkillsSave = new List<int>();
+    [SerializeField] public List<int> AmbitionsSave = new List<int>();
+    [SerializeField] public List<int> SalarySave = new List<int>();
+}

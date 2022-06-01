@@ -43,7 +43,7 @@ public class LakeInfoBehaviour : MonoBehaviour
         name.text = LB.name1;
         city.text = LB.city1;
         popular.text = LB.popular1;
-        price.text = "Kup:     " + LB.price1 + "€";
+        price.text = "Kup:     " + LB.price1 + "z³";
         x = name.text;
         if (DB.LakeIsBought.Contains(x))
         {
