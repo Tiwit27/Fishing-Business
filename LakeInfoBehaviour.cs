@@ -5,6 +5,7 @@ using TMPro;
 
 public class LakeInfoBehaviour : MonoBehaviour
 {
+    public WorkersNameDataBase WNDB;
     public RulesDataBase RDB;
     public LakesBehaviour LB;
     public DataBase DB;
@@ -146,6 +147,11 @@ public class LakeInfoBehaviour : MonoBehaviour
         RDB.Open.Add(6);
         RDB.Close.Add(20);
         RDB.Club.Add("");
+        WNDB.MyLakeID.Add(name.text);
+        for (int i = 0; i < 4; i++)
+        {
+            WNDB.WorkerOnThisLake.Add("");
+        }
     }
     public void Back()
     {

@@ -22,4 +22,12 @@ public class WorkersNameDataBase : MonoBehaviour
     [SerializeField] public List<int> SkillsSave = new List<int>();
     [SerializeField] public List<int> AmbitionsSave = new List<int>();
     [SerializeField] public List<int> SalarySave = new List<int>();
+    //save workers to lake
+    [SerializeField] public List<string> NameWorker = new List<string>();
+    [SerializeField] public List<int> CategoryID = new List<int>();
+    [SerializeField] public List<int> LakeID = new List<int>();
+    [SerializeField] public List<string> MyLakeID = new List<string>();
+    [SerializeField] public List<bool> IsWorking = new List<bool>();
+    [SerializeField] public List<string> WorkerOnThisLake = new List<string>();
+    [SerializeField] public List<int> WorkerID = new List<int>();
 }

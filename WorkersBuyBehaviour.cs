@@ -354,34 +354,38 @@ public class WorkersBuyBehaviour : MonoBehaviour
     }
     public void ProposedSalary()
     {
-        face.gameObject.SetActive(true);
-        if (int.Parse(proposedSalary.gameObject.GetComponent<TMP_InputField>().text) <= WNDB.WantingSalary[ID] * 0.75f)
+        if (proposedSalary.gameObject.GetComponent<TMP_InputField>().text != "")
         {
-            face.texture = WNDB.faces[2];
-            stopBuy.SetActive(true);
-            WNDB.StopBuy[ID] = true;
-            tooSmall.SetActive(true);
-        }
-        if (int.Parse(proposedSalary.gameObject.GetComponent<TMP_InputField>().text) > WNDB.WantingSalary[ID] * 0.75f && int.Parse(proposedSalary.gameObject.GetComponent<TMP_InputField>().text) < WNDB.WantingSalary[ID] * 0.94f)
-        {
-            face.texture = WNDB.faces[1];
-            x++;
-            if (x >= 3)
+            WNDB.IsWorking.Add(false);
+            face.gameObject.SetActive(true);
+            if (int.Parse(proposedSalary.gameObject.GetComponent<TMP_InputField>().text) <= WNDB.WantingSalary[ID] * 0.75f)
             {
+                face.texture = WNDB.faces[2];
                 stopBuy.SetActive(true);
                 WNDB.StopBuy[ID] = true;
+                tooSmall.SetActive(true);
             }
-            tooSmall.SetActive(true);
-        }
-        if (int.Parse(proposedSalary.gameObject.GetComponent<TMP_InputField>().text) >= WNDB.WantingSalary[ID] * 0.94f)
-        {
-            face.texture = WNDB.faces[0];
-            x = 0;
-            tooSmall.SetActive(false);
-            AddWorker();
-            GB.AWB.categoryID = categoryID;
-            GB.AWB.Wname = name.text;
-            GB.AWB.AddWorker();
+            if (int.Parse(proposedSalary.gameObject.GetComponent<TMP_InputField>().text) > WNDB.WantingSalary[ID] * 0.75f && int.Parse(proposedSalary.gameObject.GetComponent<TMP_InputField>().text) < WNDB.WantingSalary[ID] * 0.94f)
+            {
+                face.texture = WNDB.faces[1];
+                x++;
+                if (x >= 3)
+                {
+                    stopBuy.SetActive(true);
+                    WNDB.StopBuy[ID] = true;
+                }
+                tooSmall.SetActive(true);
+            }
+            if (int.Parse(proposedSalary.gameObject.GetComponent<TMP_InputField>().text) >= WNDB.WantingSalary[ID] * 0.94f)
+            {
+                face.texture = WNDB.faces[0];
+                x = 0;
+                tooSmall.SetActive(false);
+                AddWorker();
+                GB.AWB.categoryID = categoryID;
+                GB.AWB.Wname = name.text;
+                GB.AWB.AddWorker();
+            }
         }
     }
     public void AddWorker()

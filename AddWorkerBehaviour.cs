@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class AddWorkerBehaviour : MonoBehaviour
 {
+    public DataBase DB;
     public WorkersNameDataBase WNDB;
     public ScriptInMyWorker SIMW;
     public GameObject addWorkers;
@@ -25,6 +26,21 @@ public class AddWorkerBehaviour : MonoBehaviour
     public TMP_Text ambitions;
     public TMP_Text bonus;
     public int i;
+    public TMP_Text descriptionA;
+    public TMP_Text descriptionB;
+    public int ID;
+    public GameObject enterButton;
+    public RawImage[] rawImages = new RawImage[4];
+    public TMP_Text[] names = new TMP_Text[4];
+    public Texture button;
+    public Texture addButton;
+    public int x;
+    int z;
+    int y;
+    public int b;
+    public int c;
+    public int d;
+    int p;
     void Start()
     {
         info.SetActive(false);
@@ -32,6 +48,7 @@ public class AddWorkerBehaviour : MonoBehaviour
     }
     public void Open()
     {
+        ID = SIMW.ID;
         addWorkers.SetActive(true);
         GB.myWorkers.SetActive(false);
         GB.background4.SetActive(false);
@@ -135,6 +152,7 @@ public class AddWorkerBehaviour : MonoBehaviour
     }
     public void AmbitionandBonus()
     {
+        //bonus
         switch (categoryID)
         {
             case 1:
@@ -158,6 +176,7 @@ public class AddWorkerBehaviour : MonoBehaviour
                 {
                     bonus.GetComponentInChildren<RawImage>().texture = WNDB.bonusC1[4];
                 }
+                descriptionB.text =  "Ten bonus umo¿liwia zarabianie wiêkszej iloœci pieniêdzy w zale¿noœci od jego poziomu";
                 break;
             case 2:
                 if (WNDB.SkillsSave[SIMW.ID] <= 15)
@@ -180,6 +199,7 @@ public class AddWorkerBehaviour : MonoBehaviour
                 {
                     bonus.GetComponentInChildren<RawImage>().texture = WNDB.bonusC2[4];
                 }
+                descriptionB.text = "Ten bonus umo¿liwia tañsze utrzymanie ³owiska w zale¿noœci od jego poziomu";
                 break;
             case 3:
                 if (WNDB.SkillsSave[SIMW.ID] <= 15)
@@ -202,6 +222,7 @@ public class AddWorkerBehaviour : MonoBehaviour
                 {
                     bonus.GetComponentInChildren<RawImage>().texture = WNDB.bonusC3[4];
                 }
+                descriptionB.text = "Ten bonus umo¿liwia mniej kradzie¿y ryb w zale¿noœci od jego poziomu";
                 break;
             case 4:
                 if (WNDB.SkillsSave[SIMW.ID] <= 15)
@@ -224,29 +245,143 @@ public class AddWorkerBehaviour : MonoBehaviour
                 {
                     bonus.GetComponentInChildren<RawImage>().texture = WNDB.bonusC4[4];
                 }
+                descriptionB.text = "Ten bonus umo¿liwia wiêksz¹ iloœæ klientów w zale¿noœci od jego poziomu";
                 break;
         }
+        //ambicje
         switch (WNDB.AmbitionsSave[SIMW.ID])
         {
             case 0:
                 ambitions.GetComponentInChildren<RawImage>().texture = WNDB.ambitions[0];
+                descriptionA.text = "Ambicja znikoma, pracownik nie bêdzie rozwija³ swoich umiejêtnoœci.";
                 break;
             case 1:
                 ambitions.GetComponentInChildren<RawImage>().texture = WNDB.ambitions[1];
+                descriptionA.text = "Ambicja bardzo ma³a, pracownik bêdzie rozwija³ swoje umiejêtnoœci w bardzo wolnym tempie.";
                 break;
             case 2:
                 ambitions.GetComponentInChildren<RawImage>().texture = WNDB.ambitions[2];
+                descriptionA.text = "Ambicja ma³a, pracownik bêdzie rozwija³ swoje umiejêtnoœci w wolnym tempie.";
                 break;
             case 3:
                 ambitions.GetComponentInChildren<RawImage>().texture = WNDB.ambitions[3];
+                descriptionA.text = "Ambicja œrednia, pracownik bêdzie rozwija³ swoje umiejêtnoœci w przeciêtnym tempie.";
                 break;
             case 4:
                 ambitions.GetComponentInChildren<RawImage>().texture = WNDB.ambitions[4];
+                descriptionA.text = "Ambicja du¿a, pracownik bêdzie rozwija³ swoje umiejêtnoœci w szybkim tempie.";
                 break;
             case 5:
                 ambitions.GetComponentInChildren<RawImage>().texture = WNDB.ambitions[5];
+                descriptionA.text = "Ambicja bardzo du¿a, pracownik bêdzie rozwija³ swoje umiejêtnoœci w bardzo szybkim tempie.";
                 break;
         }
-        
+        //check is worker is employed
+        ID = SIMW.ID;
+        if (WNDB.IsWorking[ID] == true)
+        {
+            enterButton.SetActive(false);
+        }
+        else
+        {
+            enterButton.SetActive(true);
+        }
+    }
+    public void ID1()
+    {
+        categoryID = 1;
+    }
+    public void ID2()
+    {
+        categoryID = 2;
+    }
+    public void ID3()
+    {
+        categoryID = 3;
+    }
+    public void ID4()
+    {
+        categoryID = 4;
+    }
+    public void Confirm()
+    {
+        //zapis pracownika do WNDB.WorkerOnThisLake
+        ID = SIMW.ID;
+        for (p = 0; p < WNDB.MyLakeID.Count; p++)
+        {
+            if (GB.MLB.MLIIO.name1 == WNDB.MyLakeID[p])
+            {
+                WNDB.WorkerID.Add(SIMW.ID);
+                WNDB.NameWorker.Add(Workername.text);
+                WNDB.LakeID.Add(p);
+                y = p;
+                WNDB.CategoryID.Add(categoryID);
+                WNDB.IsWorking[ID] = true;
+            }
+        }
+        p = y;
+        addWorkers.SetActive(false);
+        GB.myWorkers.SetActive(true);
+        GB.background4.SetActive(true);
+        GB.background3.SetActive(false);
+        info.SetActive(false);
+        RawImageReset();
+    }
+    public void RawImageReset()
+    {
+        if (WNDB.WorkerOnThisLake[c + categoryID] != "")
+        {
+            bool check = false;
+            for (int i = 0; check == false; i++)
+            {
+                if ((x - 1) == WNDB.LakeID[i] && categoryID == WNDB.CategoryID[i])
+                {
+                    WNDB.LakeID.RemoveAt(i);
+                    WNDB.CategoryID.RemoveAt(i);
+                    WNDB.NameWorker.RemoveAt(i);
+                    WNDB.IsWorking[WNDB.WorkerID[i]] = false;
+                    check = true;
+                }
+            }
+        }
+        WNDB.WorkerOnThisLake[c + categoryID] = Workername.text;
+        rawImages[categoryID - 1].texture = button;
+        names[categoryID - 1].text = Workername.text;
+    }
+    public void Check()
+    {
+        //sprawdzenie czy ktoœ jest zatrudniony na tym stanowisku
+        for (b = 1; b <= 4;)
+        {
+            c = (x - 1) * 4;
+            if (WNDB.WorkerOnThisLake[c + b] != "" && WNDB.WorkerOnThisLake[c + b] != "NULL")
+            {
+                rawImages[b - 1].texture = button;
+                names[b - 1].text = WNDB.WorkerOnThisLake[c + b];
+            }
+            b++;
+        }
+        if (b == 5)
+        {
+            b = 4;
+        }
+    }
+    public void RawImageClear()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            rawImages[i].texture = addButton;
+            names[i].text = "";
+        }
+    }
+    public void IDPrzypisz()
+    {
+        for (int i = 0; i < WNDB.MyLakeID.Count; i++)
+        {
+            if (GB.MLB.MLIIO.name1 == WNDB.MyLakeID[i])
+            {
+                x = i + 1;
+            }
+        }
     }
 }

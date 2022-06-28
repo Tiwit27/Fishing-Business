@@ -16,7 +16,8 @@ public class DataBase : MonoBehaviour
     [SerializeField] public List<string> LakeIsMoreInfo = new List<string>();
     //przypisywanie informacji do ³owisk
     public void Szachta()
-    { //0
+    {
+        ID = 0;
         city1 = "Wodzis³aw Œl¹ski";
         size1 = "Bardzo Ma³y";
         fish1 = "P³oæ";
@@ -25,7 +26,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "Mu³owe";
     }
     public void ZalewPolomski()
-    { //1 
+    {
+        ID = 1;
         city1 = "Po³omia";
         size1 = "Ma³y";
         fish1 = "Karp";
@@ -34,7 +36,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "¯wirowe";
     }
     public void ZalewRybnicki()
-    { //2
+    {
+        ID = 2;
         city1 = "Rybnik";
         size1 = "Du¿y";
         fish1 = "Karp";
@@ -43,7 +46,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "Mu³owe";
     }
     public void DzierznoDuze()
-    { //3
+    {
+        ID = 3;
         city1 = "Gliwice";
         size1 = "Du¿y";
         fish1 = "Leszcz";
@@ -52,7 +56,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "Glinowe";
     }
     public void JezioroDobrzyckie()
-    { //4
+    {
+        ID = 4;
         city1 = "Dobrzyce";
         size1 = "Du¿y";
         fish1 = "Karp";
@@ -61,7 +66,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "¯wirowe";
     }
     public void ZalewSulejowski()
-    { //5
+    {
+        ID = 5;
         city1 = "Piotrków Trybunalski";
         size1 = "Bardzo Du¿y";
         fish1 = "Amur";
@@ -70,7 +76,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "Mu³owe";
     }
     public void ZbiornikGoczalkowicki()
-    { //6
+    {
+        ID = 6;
         city1 = "Gocza³kowice";
         size1 = "Bardzo Du¿y";
         fish1 = "Karp";
@@ -79,7 +86,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "Glinowe";
     }
     public void JezioroCzorsztynskie()
-    { //7
+    {
+        ID = 7;
         city1 = "Czorsztyn";
         size1 = "Œredni";
         fish1 = "Pstr¹g";
@@ -88,7 +96,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "¯wirowe";
     }
     public void Mlynszczok()
-    { //8
+    {
+        ID = 8;
         city1 = "Zebrzydowice";
         size1 = "Ma³y";
         fish1 = "Karp";
@@ -97,7 +106,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "Mu³owe";
     }
     public void JezioroLaka()
-    { //9
+    {
+        ID = 9;
         city1 = "Pszczyna";
         size1 = "Œredni";
         fish1 = "Leszcz";
@@ -106,7 +116,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "¯wirowe";
     }
     public void ZbiornikDzieckowice()
-    { //10
+    {
+        ID = 10;
         city1 = "Tychy";
         size1 = "Du¿y";
         fish1 = "Sum";
@@ -115,7 +126,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "Glinowe";
     }
     public void JezioroSwierklaniec()
-    { //11
+    {
+        ID = 11;
         city1 = "Œwierklaniec";
         size1 = "Œredni";
         fish1 = "Karp";
@@ -124,7 +136,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "Mu³owe";
     }
     public void ZalewPorajski()
-    { //12
+    {
+        ID = 12;
         city1 = "Czêstochowa";
         size1 = "Du¿y";
         fish1 = "Amur";
@@ -133,7 +146,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "¯wirowe";
     }
     public void JezioroOtmuchowskie()
-    { //13
+    {
+        ID = 13;
         city1 = "Otmuchów";
         size1 = "Bardzo Du¿y";
         fish1 = "Karp";
@@ -142,7 +156,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "¯wirowe";
     }
     public void JezioroNyskie()
-    { //14
+    {
+        ID = 14;
         city1 = "Nysa";
         size1 = "Bardzo Du¿y";
         fish1 = "Amur";
@@ -151,7 +166,8 @@ public class DataBase : MonoBehaviour
         bottomType1 = "Glinowe";
     }
     public void StaroRzeka()
-    { //15
+    {
+        ID = 15;
         city1 = "Olza";
         size1 = "Bardzo Ma³y";
         fish1 = "Karp";

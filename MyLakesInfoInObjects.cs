@@ -18,6 +18,10 @@ public class MyLakesInfoInObjects : MonoBehaviour
     {
         MLB = GameObject.Find("Manager").GetComponent<MyLakesBehaviour>();
     }
+    public void Przekaznik()
+    {
+        MLB.GB.AWB.IDPrzypisz();
+    }
     public void Przypisz()
     {
         MLB.MLIIO = this.gameObject.GetComponent<MyLakesInfoInObjects>();
