@@ -30,4 +30,5 @@ public class WorkersNameDataBase : MonoBehaviour
     [SerializeField] public List<bool> IsWorking = new List<bool>();
     [SerializeField] public List<string> WorkerOnThisLake = new List<string>();
     [SerializeField] public List<int> WorkerID = new List<int>();
+    public int[] WorkerCategoryID = new int[4];
 }

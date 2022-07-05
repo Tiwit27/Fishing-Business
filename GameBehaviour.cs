@@ -5,6 +5,7 @@ using TMPro;
 
 public class GameBehaviour : MonoBehaviour
 {
+    public MyWorkersInfoBehaviour MWIB;
     public AddWorkerBehaviour AWB;
     public WorkersBuyBehaviour WBB;
     public StartGame SG;
@@ -23,6 +24,7 @@ public class GameBehaviour : MonoBehaviour
     public GameObject background4;
     void Start()
     {
+        MWIB.myWorkers.SetActive(false);
         background4.SetActive(false);
         obramówka1.SetActive(false);
         background3.SetActive(false);
@@ -67,7 +69,8 @@ public class GameBehaviour : MonoBehaviour
         WBB.workersInfo.SetActive(false);
         WBB.background.SetActive(false);
         AWB.addWorkers.SetActive(false);
-
+        AWB.employed.SetActive(false);
+        MWIB.myWorkers.SetActive(false);
     }
     //fishingClubs
     public void OpenFishingClubs()
@@ -105,6 +108,20 @@ public class GameBehaviour : MonoBehaviour
         WBB.background.SetActive(false);
         AWB.addWorkers.SetActive(false);
     }
+    public void OpenMyWorkersInfo()
+    {
+        background3.SetActive(true);
+        SG.background.SetActive(false);
+        SG.background2.SetActive(false);
+        WB.workers.SetActive(false);
+        MLB.myLakes.SetActive(false);
+        SG.MainMenu.SetActive(false);
+        background4.SetActive(false);
+        WBB.workersInfo.SetActive(false);
+        WBB.background.SetActive(false);
+        AWB.addWorkers.SetActive(false);
+        MWIB.myWorkers.SetActive(true);
+    }
     void Update()
     {
         //stop Game
@@ -112,6 +129,14 @@ public class GameBehaviour : MonoBehaviour
         {
             Time.timeScale = 0;
             stopWindow.SetActive(true);
+        }
+        if (SG.MainMenu.activeSelf || SG.start.activeSelf || SG.chooseCountry.activeSelf || SG.chooseRegion.activeSelf)
+        {
+            obramówka.SetActive(false);
+        }
+        else
+        {
+            obramówka.SetActive(true);
         }
     }
     public void Return()

@@ -400,15 +400,19 @@ public class WorkersBuyBehaviour : MonoBehaviour
         {
             case 1:
                 Cat1();
+                WNDB.WorkerCategoryID[0]++;
                 break;
             case 2:
                 Cat2();
+                WNDB.WorkerCategoryID[1]++;
                 break;
             case 3:
                 Cat3();
+                WNDB.WorkerCategoryID[2]++;
                 break;
             case 4:
                 Cat4();
+                WNDB.WorkerCategoryID[3]++;
                 break;
         }
     }

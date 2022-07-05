@@ -79,7 +79,6 @@ public class StartGame : MonoBehaviour
         person.SetActive(true);
         money.SetActive(true);
         lakes.SetActive(true);
-        TB.TimeStart();
     }
     //countries
     public void Poland()

@@ -7,6 +7,7 @@ public class MyWorkersBehaviour : MonoBehaviour
     public GameBehaviour GB;
     public void Exit()
     {
+        GB.AWB.error.SetActive(false);
         GB.background3.SetActive(false);
         GB.myWorkers.SetActive(false);
         GB.MLB.myLakes.SetActive(true);
